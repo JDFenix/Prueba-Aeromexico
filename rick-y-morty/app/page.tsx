@@ -1,13 +1,21 @@
 "use client"
 
-import { useCharacter } from "@/src/features/character/useCharacter";
-import { useEffect } from "react";
+import ListCharacter from "@/src/features/character/components/ListCharacter";
+
+
 
 export default function Home() {
 
+
   return (
     <main>
-      <section></section>
+      <header>
+        <h1>Rick y Morty</h1>
+      </header>
+
+      <div>
+        <ListCharacter />
+      </div>
     </main>
   );
 }

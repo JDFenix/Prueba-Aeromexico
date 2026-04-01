@@ -1,0 +1,49 @@
+.card {
+    padding: 1rem 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    border: 1.5px solid;
+    border-color: rgb(169, 164, 164);
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    transform: scale(1.01);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.image {
+    border-radius: 10px;
+}
+
+.iconStatus {
+    color: currentColor;
+    display: flex;
+    filter: drop-shadow(0 0 1px currentColor);
+}
+
+
+
+.txtStatus {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.txtAlive {
+    color: rgb(30, 168, 30);
+}
+
+.txtDead {
+    color: red;
+}
+
+.txtUnknown {
+    color: rgb(38, 38, 199);
+}
