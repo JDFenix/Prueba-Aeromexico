@@ -4,8 +4,8 @@ import { BsHouse, BsWallet } from "react-icons/bs";
 
 export default function Home() {
   return (
-    <div>
-      <Button label="prueba" icon={BsHouse} type="primary" ></Button>
-    </div>
+    <main>
+      <section></section>
+    </main>
   );
 }
