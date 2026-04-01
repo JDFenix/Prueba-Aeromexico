@@ -1,8 +1,10 @@
-import Button from "@/src/shared/components/buttons/Button";
-import Image from "next/image";
-import { BsHouse, BsWallet } from "react-icons/bs";
+"use client"
+
+import { useCharacter } from "@/src/features/character/useCharacter";
+import { useEffect } from "react";
 
 export default function Home() {
+
   return (
     <main>
       <section></section>
