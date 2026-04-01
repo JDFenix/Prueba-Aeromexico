@@ -1,7 +1,8 @@
 "use client"
 
+import Image from "next/image";
 import ListCharacter from "@/src/features/character/components/ListCharacter";
-
+import logo from "@/assets/images/logo.png"
 
 
 export default function Home() {
@@ -10,12 +11,10 @@ export default function Home() {
   return (
     <main>
       <header>
-        <h1>Rick y Morty</h1>
+        <Image src={logo} alt="logo-rick-and-morty" />
       </header>
 
-      <div>
-        <ListCharacter />
-      </div>
+      <ListCharacter />
     </main>
   );
 }

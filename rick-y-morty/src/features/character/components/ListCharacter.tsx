@@ -2,6 +2,8 @@ import CharacterCard from "@/src/features/character/components/CardCharacter";
 import { useCharacter } from "@/src/features/character/useCharacter";
 import { useEffect, useState } from "react";
 import { Character } from "rickmortyapi";
+import styles from "@/src/features/character/components/styles/ListCharacter.module.css";
+import FocusCharacter from "./FocusCharacter";
 
 export default function ListCharacter() {
     const { getAllCharacters, characters, loading, error, message } = useCharacter();
@@ -13,45 +15,40 @@ export default function ListCharacter() {
 
 
     useEffect(() => {
-        setCharacterFocus(characters[0]);
-    }, [characters])
+        if (characters.length > 0 && !characterFocus) {
+            setCharacterFocus(characters[0]);
+        }
+    }, [characters, characterFocus])
 
 
     return (
-        <article>
+        <article className={styles.containerArticle}>
             {loading ? (
                 <p>Cargando</p>
             ) : (
-                <div>
+                <div className={styles.bodyLayout}>
                     {message ? (
                         <p>{message}</p>
                     ) : (
+                        <>
+                           {characterFocus && (
+                               <FocusCharacter characterFocus={characterFocus} />
+                           )}
 
-                        <div>
-                            {characterFocus && (
-                                <div>
-                                    <img src={characterFocus.image} alt="" />
-                                    <p>{characterFocus.name}</p>
-                                </div>
-                            )}
-
-                            <div>
+                            <section className={styles.listSection}>
                                 {characters.map((c) => (
                                     <CharacterCard
                                         key={c.id}
+                                        characterFocus={characterFocus}
                                         character={c}
                                         onSelect={(character) => setCharacterFocus(character)}
                                     />
                                 ))}
-                            </div>
-                        </div>
+                            </section>
+                        </>
                     )}
                 </div>
-
-
             )}
         </article>
-
     )
-
 }
