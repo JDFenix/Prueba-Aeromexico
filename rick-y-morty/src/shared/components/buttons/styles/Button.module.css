@@ -1,0 +1,37 @@
+.baseButton {
+    padding: 0.45rem 1rem;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    font-weight: 500;
+    gap: 0.5rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    transition: all .1s ease-in-out;
+
+}
+
+.icon {
+    color: currentColor;
+    display: flex;
+    filter: drop-shadow(0 0 1px currentColor);
+}
+
+.primary {
+    background-color: green;
+    border-color: 3px rgb(11, 98, 11);
+}
+
+.primary:hover {
+    transform: scale(1.03);
+    background-color: rgb(2, 111, 2);
+}
+
+.primary:active {
+    transform: scale(0.97);
+    background-color: rgb(2, 111, 2);
+}
