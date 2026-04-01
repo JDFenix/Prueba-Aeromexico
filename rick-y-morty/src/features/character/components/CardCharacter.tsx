@@ -18,13 +18,13 @@ const STATUS_ICONS: Record<string, JSX.Element> = {
     unknown: <FaQuestion size={16} />,
 };
 
-export default function CardCharacter({ character }: { character: Character }) {
+export default function CardCharacter({ character, onSelect }: { character: Character, onSelect: (character: Character) => void }) {
 
     const statusClass = STATUS_STYLES[character.status] || styles.txtUnknown
     const icon = STATUS_ICONS[character.status] || STATUS_ICONS.unknown;
 
     return (
-        <article className={styles.card}>
+        <article className={styles.card} onClick={() => onSelect(character)}>
             <img className={styles.image} src={character.image} alt="image-character" />
             <p>{character.name}</p>
 
