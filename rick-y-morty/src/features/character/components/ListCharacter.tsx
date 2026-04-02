@@ -11,6 +11,7 @@ export default function ListCharacter() {
     const { getAllCharacters, characters, loading, error, message } = useCharacter();
     const [characterFocus, setCharacterFocus] = useState<Character | null>(null)
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
 
     useEffect(() => {
         getAllCharacters();
@@ -29,6 +30,21 @@ export default function ListCharacter() {
             setIsModalOpen(true);
         }
     };
+
+    const normalizedQuery = searchQuery
+        .trim()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+    const filteredCharacters = characters.filter((character) => {
+        const normalizedName = character.name
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
+
+        return normalizedName.includes(normalizedQuery);
+    });
 
 
     return (
@@ -61,17 +77,22 @@ export default function ListCharacter() {
                             <section className={styles.listSection}>
 
                                 <div className={styles.searchBarSlot}>
-                                    <SearchBar />
+                                    <SearchBar
+                                        value={searchQuery}
+                                        onChange={setSearchQuery}
+                                    />
                                 </div>
 
-                                {characters.map((c) => (
-                                    <CharacterCard
-                                        key={c.id}
-                                        characterFocus={characterFocus}
-                                        character={c}
-                                        onSelect={handleSelectCharacter}
-                                    />
-                                ))}
+                                <div className={styles.cardsScroller}>
+                                    {filteredCharacters.map((c) => (
+                                        <CharacterCard
+                                            key={c.id}
+                                            characterFocus={characterFocus}
+                                            character={c}
+                                            onSelect={handleSelectCharacter}
+                                        />
+                                    ))}
+                                </div>
 
 
                                 <div className={styles.favouritesOverlay}>
