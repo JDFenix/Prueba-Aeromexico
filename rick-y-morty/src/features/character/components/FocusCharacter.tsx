@@ -9,13 +9,13 @@ export default function FocusCharacter({ characterFocus }: { characterFocus: Cha
                 <img className={styles.focusImage} src={characterFocus.image} alt={characterFocus.name} />
                 <div className={styles.liveBadge}>
                     <span className={styles.liveDot}></span>
-                    LIVE
+                    {characterFocus.status}
                 </div>
             </div>
 
             <div className={styles.infoOverlay}>
                 <h2 className={styles.characterName}>{characterFocus.name}</h2>
-                <p className={styles.characterMeta}>{characterFocus.species} • {characterFocus.gender}</p>
+                <p className={styles.characterMeta}>{characterFocus.species}</p>
 
                 <div className={styles.statsGrid}>
                     <div className={styles.statItem}>

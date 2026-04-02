@@ -22,7 +22,8 @@ export default function CardCharacter({ character, onSelect, characterFocus }: c
         >
             <p className={styles.name}>{character.name.split(" ")[0]}</p>
             <img className={styles.image} src={character.image} alt="image-character" />
-            <BsHeart size={15} color="white" />
+            
+            <button className="flex flex-row"><BsHeart size={15} color="white" /> Like</button>
         </article>
     )
 

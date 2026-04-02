@@ -12,13 +12,23 @@
 
 
 body {
-    background: var(--background);
-    color: var(--foreground);
-    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("../../../assets/images/background.jpg");
+    background-size: auto;
+    background-position: -50rem -17.5rem;
+    background-repeat: repeat;
 
     display: flex;
     justify-content: center;
     align-items: center;
+}
 
-    padding: 1.5rem 2rem;
+.footer {
+    width: 1440;
+    height: 150;
+    top: 873px;
+    opacity: 1;
+    position: absolute;
+    background: linear-gradient(180deg, #9EDF25 3.03%, #1E2E00 177.63%);
+    display: flex;
+    width: max-content;
 }
