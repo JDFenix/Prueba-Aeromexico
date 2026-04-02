@@ -10,8 +10,16 @@
 
 .header {
     display: flex;
-    justify-content: end;
+    width: 50vw;
+    justify-content: flex-end;
     align-items: end;
+}
+
+@media (max-width: 768px) {
+    .header {
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 .characterShell {
