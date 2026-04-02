@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { characterService } from "@/src/features/character/characterService"
+import { characterService } from "@/src/features/character/services/characterService"
 import { type Character } from "rickmortyapi"
 
 export const useCharacter = () => {
@@ -26,6 +26,8 @@ export const useCharacter = () => {
             }, 5500)
         }
     }
+
+
 
 
     return { getAllCharacters, characters, loading, error, message }

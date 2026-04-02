@@ -1,20 +1,23 @@
 import CharacterCard from "@/src/features/character/components/CardCharacter";
-import { useCharacter } from "@/src/features/character/useCharacter";
+import { useCharacter } from "@/src/features/character/hooks/useCharacter";
 import { useEffect, useState } from "react";
 import { Character } from "rickmortyapi";
 import styles from "@/src/features/character/components/styles/ListCharacter.module.css";
 import FocusCharacter from "./FocusCharacter";
 import SearchBar from "@/src/features/searchBar/SearchBar";
 import Favourites from "../../favourites/Favourites";
+import { useFavoritesStore } from "@/src/shared/store/useFavoritesStore";
 
 export default function ListCharacter() {
     const { getAllCharacters, characters, loading, error, message } = useCharacter();
+    const fetchFavorites = useFavoritesStore((state) => state.fetchFavorites);
     const [characterFocus, setCharacterFocus] = useState<Character | null>(null)
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
 
     useEffect(() => {
         getAllCharacters();
+        fetchFavorites();
     }, [])
 
 

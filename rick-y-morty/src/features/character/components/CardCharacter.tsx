@@ -3,8 +3,8 @@ import { type Character } from "rickmortyapi"
 import styles from "@/src/features/character/components/styles/CardCharacter.module.css"
 import { BsHeart, BsHeartFill } from "react-icons/bs"
 import { FaSkull, FaQuestion } from "react-icons/fa"
-import { JSX } from "react"
-
+import { type MouseEvent } from "react"
+import { useFavoritesStore } from "@/src/shared/store/useFavoritesStore"
 
 interface cardCharacterContent {
     character: Character;
@@ -13,8 +13,13 @@ interface cardCharacterContent {
 }
 
 export default function CardCharacter({ character, onSelect, characterFocus }: cardCharacterContent) {
+    const toggleFavorite = useFavoritesStore((state) => state.toggleFavorite);
+    const favorited = useFavoritesStore((state) => state.isFavorite(character.id));
 
-    
+    const handleLike = (e: MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation();
+        toggleFavorite(character);
+    };
 
     return (
         <article
@@ -24,12 +29,15 @@ export default function CardCharacter({ character, onSelect, characterFocus }: c
             <p className={styles.name}>{character.name.split(" ")[0]}</p>
             <img className={styles.image} src={character.image} alt="image-character" />
 
-            <button className={styles.likeButton}>
+            <button className={styles.likeButton} onClick={handleLike}>
                 <span className={styles.likeButtonIconWrapper}>
-                    <BsHeart size={15} className={styles.likeButtonIcon} />
-                    <BsHeartFill size={15} className={styles.likeButtonIconFill} />
+                    {favorited ? (
+                        <BsHeartFill size={15} className={styles.likeButtonIconFillActive} />
+                    ) : (
+                        <BsHeart size={15} className={styles.likeButtonIcon} />
+                    )}
                 </span>
-                Like
+                {favorited ? "Liked" : "Like"}
             </button>
         </article>
     )

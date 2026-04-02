@@ -102,6 +102,10 @@
     transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
+.likeButtonIconFillActive {
+    color: red;
+}
+
 .likeButton:hover .likeButtonIcon {
     opacity: 0;
 }
